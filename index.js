@@ -132,6 +132,7 @@ function toggleFullResults() {
 }
 
 function populateResults() {
+    var results = sortByLetterAsc(phoneticAlphabet)
     var results = sortByIncorrectDesc(phoneticAlphabet)
     var resultsHtml = "<table style=\"width:100%\">"
     resultsHtml += "<tr>"
@@ -178,24 +179,28 @@ function populateResults() {
     resultsTable.innerHTML = resultsHtml;
 }
 
-function sortByIncorrectDesc(results) {
-    return results.sort((a, b) => (a.incorrect > b.incorrect) ? -1 : 1)
-}
+
 function sortByIncorrectAsc(results) {
     return results.sort((a, b) => (a.incorrect > b.incorrect) ? 1 : -1)
 }
 
+function sortByIncorrectDesc(results) {
+    return results.sort((a, b) => (a.incorrect > b.incorrect) ? -1 : 1)
+}
+
+
 function sortByLetterAsc(results) {
-    return results.sort((a, b) => (a.letter > b.letter) ? 1 : -1)
+    return results.sort((a, b) => (a.letter > b.letter) ? -1 : 1)
 }
 
 function sortByLetterDesc(results) {
-    return results.sort((a, b) => (a.letter > b.letter) ? 1 : -1)
+    return results.sort((a, b) => (a.letter > b.letter) ? -1 : 1)
+}
+
+function sortByCorrectAsc(results) {
+    return results.sort((a, b) => (a.correct > b.correct) ? 1 : -1)
 }
 
 function sortByCorrectDesc(results) {
     return results.sort((a, b) => (a.correct > b.correct) ? -1 : 1)
-}
-function sortByCorrectAsc(results) {
-    return results.sort((a, b) => (a.correct > b.correct) ? 1 : -1)
 }
